@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
 
 	// number of generations
 	int generations_count = 0;
-
+	
 	if (!read_input(&objects, &object_count, &sack_capacity, &generations_count, argc, argv)) {
 		return 0;
 	}

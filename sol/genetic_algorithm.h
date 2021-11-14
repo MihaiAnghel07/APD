@@ -36,7 +36,7 @@ void crossover(individual *parent1, individual *child1, int generation_index);
 void copy_individual(const individual *from, const individual *to);
 
 // deallocates a generation
-void free_generation(individual *generation);
+void free_generation(input in, individual *generation, individual *generation2);
 
 // runs the genetic algorithm
 void *run_genetic_algorithm(void *arg);
