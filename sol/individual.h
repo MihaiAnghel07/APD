@@ -6,7 +6,7 @@
 typedef struct _individual {
 	int fitness;
 	int *chromosomes;
-    int chromosome_length;
+    	int chromosome_length;
 	int index;
 } individual;
 

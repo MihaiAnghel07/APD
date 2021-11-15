@@ -24,10 +24,10 @@ void compute_fitness_function(input in, const sack_object *objects, individual *
 int cmpfunc(const void *a, const void *b);
 
 // performs a variant of bit string mutation
-void mutate_bit_string_1(const individual *ind, int generation_index);
+void mutate_bit_string_1(input in, const individual *ind, int generation_index);
 
 // performs a different variant of bit string mutation
-void mutate_bit_string_2(const individual *ind, int generation_index);
+void mutate_bit_string_2(input in, const individual *ind, int generation_index);
 
 // performs one-point crossover
 void crossover(individual *parent1, individual *child1, int generation_index);
