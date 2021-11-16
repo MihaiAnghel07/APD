@@ -8,6 +8,8 @@
 // reads input from a given file
 int read_input(sack_object **objects, int *object_count, int *sack_capacity, int *generations_count, int argc, char *argv[]);
 
+void initialize_data(individual *current_generation, individual *next_generation, int object_count, int i);
+
 // displays all the objects that can be placed in the sack
 void print_objects(const sack_object *objects, int object_count);
 
@@ -18,7 +20,7 @@ void print_generation(const individual *generation, int limit);
 void print_best_fitness(const individual *generation);
 
 // computes the fitness function for each individual in a generation
-void compute_fitness_function(input in, const sack_object *objects, individual *generation, int object_count, int sack_capacity);
+void compute_fitness_function(input in, sack_object *objects, individual *generation, int object_count, int sack_capacity);
 
 // compares two individuals by fitness and then number of objects in the sack (to be used with qsort)
 int cmpfunc(const void *a, const void *b);

@@ -31,6 +31,22 @@ int main(int argc, char *argv[]) {
 	individual *current_generation = (individual*) calloc(object_count, sizeof(individual));
 	individual *next_generation = (individual*) calloc(object_count, sizeof(individual));
 
+	// for (int i = 0; i < P; i++) {
+	// 	in[i].objects = objects;
+	// 	in[i].object_count = object_count;
+	// 	in[i].sack_capacity = sack_capacity;
+	// 	in[i].generations_count = generations_count;
+	// 	in[i].thread_id = i;
+	// 	in[i].P = P;
+	// 	in[i].current_generation = current_generation;
+	// 	in[i].next_generation = next_generation;
+	// 	in[i].barrier = barrier;
+	// 	in[i].mutex = mutex;
+	// }
+
+	pthread_barrier_init(barrier, NULL, P);
+	pthread_mutex_init(mutex, NULL);
+
 	for (int i = 0; i < P; i++) {
 		in[i].objects = objects;
 		in[i].object_count = object_count;
@@ -42,12 +58,6 @@ int main(int argc, char *argv[]) {
 		in[i].next_generation = next_generation;
 		in[i].barrier = barrier;
 		in[i].mutex = mutex;
-	}
-
-	pthread_barrier_init(barrier, NULL, P);
-	pthread_mutex_init(mutex, NULL);
-
-	for (int i = 0; i < P; i++) {
 		pthread_create(&tid[i], NULL, run_genetic_algorithm, &in[i]);
 	}
 
@@ -56,8 +66,6 @@ int main(int argc, char *argv[]) {
 		pthread_join(tid[i], NULL);
 	}
 	
-	//run_genetic_algorithm(in.objects, in.object_count, in.generations_count, in.sack_capacity);
-
 	pthread_mutex_destroy(mutex);
 	pthread_barrier_destroy(barrier);
 	free(objects);
