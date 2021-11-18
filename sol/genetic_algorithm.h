@@ -8,10 +8,14 @@
 // reads input from a given file
 int read_input(sack_object **objects, int *object_count, int *sack_capacity, int *generations_count, int argc, char *argv[]);
 
-void initialize_data(individual *current_generation, individual *next_generation, int object_count, int i);
-
 // displays all the objects that can be placed in the sack
 void print_objects(const sack_object *objects, int object_count);
+
+// compute start index
+int compute_start(input in, int limit);
+
+// compute end index
+int compute_end(input in, int limit);
 
 // displays all or a part of the individuals in a generation
 void print_generation(const individual *generation, int limit);
@@ -38,7 +42,7 @@ void crossover(individual *parent1, individual *child1, int generation_index);
 void copy_individual(const individual *from, const individual *to);
 
 // deallocates a generation
-void free_generation(input in, individual *generation, individual *generation2);
+void free_generation(input in, individual *current_generation, individual *next_generation);
 
 // runs the genetic algorithm
 void *run_genetic_algorithm(void *arg);

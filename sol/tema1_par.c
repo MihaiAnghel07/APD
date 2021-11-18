@@ -21,6 +21,7 @@ int main(int argc, char *argv[]) {
 		return 0;
 	}
   	
+  	// number of threads
   	int P = (int)atoi(argv[3]);
 	pthread_t tid[P];
 	input in[P];
@@ -31,18 +32,6 @@ int main(int argc, char *argv[]) {
 	individual *current_generation = (individual*) calloc(object_count, sizeof(individual));
 	individual *next_generation = (individual*) calloc(object_count, sizeof(individual));
 
-	// for (int i = 0; i < P; i++) {
-	// 	in[i].objects = objects;
-	// 	in[i].object_count = object_count;
-	// 	in[i].sack_capacity = sack_capacity;
-	// 	in[i].generations_count = generations_count;
-	// 	in[i].thread_id = i;
-	// 	in[i].P = P;
-	// 	in[i].current_generation = current_generation;
-	// 	in[i].next_generation = next_generation;
-	// 	in[i].barrier = barrier;
-	// 	in[i].mutex = mutex;
-	// }
 
 	pthread_barrier_init(barrier, NULL, P);
 	pthread_mutex_init(mutex, NULL);

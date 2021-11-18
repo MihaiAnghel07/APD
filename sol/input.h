@@ -12,4 +12,5 @@ typedef struct input
 	individual *next_generation;
 	pthread_barrier_t *barrier;
 	pthread_mutex_t *mutex;
+	
 } input;
